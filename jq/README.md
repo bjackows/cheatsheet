@@ -34,3 +34,11 @@ seq 1 20 | \
     -n -R \
     '[inputs] | reduce .[] as $item (0; . + ($item | tonumber))'
 ```
+
+### Keys
+
+Output the keys of each fields
+
+```
+jq -n '{"blih": true, "blah": false} | keys'
+````
