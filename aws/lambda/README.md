@@ -35,3 +35,12 @@ function readS3File(bucketName, filename, cb) {
 ```
 response.body = "";
 ```
+
+### Add headers
+
+```
+response.headers["content-type"] = [{
+    "key": "Content-Type",
+    "value": "text/html"
+}];
+```
