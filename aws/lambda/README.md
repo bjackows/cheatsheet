@@ -22,7 +22,7 @@ function readS3File(bucketName, filename, cb) {
     var params = { Bucket: bucketName, Key: filename };
     s3.getObject(params, function(err, data) {
         if (err) {
-            return cb(err, null);
+            return cb(null, err);
         }
 
         return cb(data.Body.toString(), null);
