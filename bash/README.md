@@ -22,8 +22,9 @@ https://www.tldp.org/LDP/abs/html/x17974.html
 
 ```
 exec 6>&1
-exec 1>test.log
+exec 1>test.log 2>&1
 
 echo toto
+echo toto >&2
 echo titi >&6
 ```
