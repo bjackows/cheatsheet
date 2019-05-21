@@ -44,3 +44,8 @@ response.headers["content-type"] = [{
     "value": "text/html"
 }];
 ```
+
+### S3
+
+- Cannot start with `/`
+- need to be normalized: `var path = require("path"); path.normalize(s3_path);`
