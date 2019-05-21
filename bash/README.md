@@ -30,3 +30,9 @@ echo titi >&6
 
 cat < "test.log" >&6
 ```
+
+### Move file in place
+
+```
+sed '' <file 1<>file
+```
