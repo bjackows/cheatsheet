@@ -27,4 +27,6 @@ exec 1>test.log 2>&1
 echo toto
 echo toto >&2
 echo titi >&6
+
+cat < "test.log" >&6
 ```
