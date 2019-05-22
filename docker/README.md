@@ -8,3 +8,9 @@
   xargs -L8 -P8 docker inspect
 } | jq '.[] | keys'
 ```
+
+### Remove untagged images
+
+```
+docker images -q --filter "dangling=true" | xargs docker rmi
+```
