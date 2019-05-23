@@ -1,10 +1,17 @@
 ### Export variable from JSON string
 
 ```
-jq -cn \
-    '{"blih": {"blih": true}, "blah": false}' | \
-  bash -c \
-    'declare -a "x=($(jq -r ".[] | tostring | @sh"))"; echo "${x[blih]}"'
+#!/bin/bash
+exec 6< <(jq -cn \
+    '{"blih": {"blih": true}, "blah": "=false;ls"}')
+
+for a in $(jq 'to_entries[] | (.key | tostring) + "=" + (.value | tostring)' -r <&6)
+do
+	declare "$a"
+done
+
+echo $blah
+echo $blih
 ```
 
 ### Register a trap function
