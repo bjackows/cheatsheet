@@ -36,3 +36,15 @@ cat < "test.log" >&6
 ```
 sed '' <file 1<>file
 ```
+
+### Create subcommand and assign filedescriptor
+
+```
+#!/bin/bash
+
+exec 6< <(dd if=/dev/zero bs=512 count=100000 asdf)
+
+echo toto
+wc -c <&6
+echo titi
+```
