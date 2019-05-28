@@ -56,3 +56,39 @@ jq -n '{"blih": true, "blah": false} | keys'
 |@sh|The input is escaped suitable for use in a command-line for a POSIX shell. If the input is an array, the output will be a series of space-separated strings.|
 |@base64|The input is converted to base64 as specified by RFC 4648.|
 |@base64d|The inverse of @base64, input is decoded as specified by RFC 4648. Note: If the decoded string is not UTF-8, the results are undefined|
+
+### Map array value to string array
+
+```
+jq -R '(
+  ["date",
+    "time",
+    "x-edge-location",
+    "sc-bytes",
+    "c-ip",
+    "cs-method",
+    "cs(Host)",
+    "cs-uri-stem",
+    "sc-status",
+    "cs(Referer)",
+    "cs(User-Agent)",
+    "cs-uri-query",
+    "cs(Cookie)",
+    "x-edge-result-type",
+    "x-edge-request-id",
+    "x-host-header",
+    "cs-protocol",
+    "cs-bytes",
+    "time-taken",
+    "x-forwarded-for",
+    "ssl-protocol",
+    "ssl-cipher",
+    "x-edge-response-result-type",
+    "cs-protocol-version",
+    "fle-status",
+    "fle-encrypted-fields"]) as $fields |
+  . |
+  split("\t") |
+  to_entries |
+  reduce .[] as $item ({}; ."\($fields[$item.key])" = $item.value)'
+```
