@@ -55,3 +55,18 @@ echo toto
 wc -c <&6
 echo titi
 ```
+
+### Xargs, jq and export bash function
+
+```
+process() {
+	echo "arg1: \"${1}\" arg2: \"${2}\""
+}
+
+export -f process
+
+seq 1 10 | \
+	jq --arg arg1 "first blih" -rR '[($arg1 | @sh), (. | split(" ")[-1] | @sh)] | @tsv' | \
+	xargs -n2 -P4 bash -c "process \"\${@}\"" _
+
+```
