@@ -92,3 +92,19 @@ jq -R '(
   to_entries |
   reduce .[] as $item ({}; ."\($fields[$item.key])" = $item.value)'
 ```
+
+### Not select with multiple values
+
+Pass the select if both `. != "1"` and `. != "2"` are true
+
+```
+seq 1 10 | jq -R 'select([. != ("1", "2")] | all)'
+```
+
+### Select with multiple values
+
+Pass the select if `. == "1"` or `. == "2"`
+
+```
+seq 1 10 | jq -R 'select(. == ("1", "2"))'
+```
