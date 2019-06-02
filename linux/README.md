@@ -3,3 +3,8 @@
 ```
 xrdb -merge ~/.Xresources
 ```
+
+
+### Links:
+
+- https://unix4lyfe.org/xterm/
