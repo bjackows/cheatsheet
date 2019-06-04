@@ -70,3 +70,9 @@ seq 1 10 | \
 	xargs -n2 -P4 bash -c "process \"\${@}\"" _
 
 ```
+
+### Escape everything in here-doc
+
+cat - << 'EOF'
+echo $pwd
+EOF
