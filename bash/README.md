@@ -73,6 +73,24 @@ seq 1 10 | \
 
 ### Escape everything in here-doc
 
+```
 cat - << 'EOF'
 echo $pwd
 EOF
+```
+
+### Deploy config files using sudo
+
+```
+myconfig() {
+cat - << 'EOF'
+$blih=blah
+EOF
+}
+
+sudo -u nobody bash <<< EOF
+cat - << 'EE' > ~/.config
+$(myconfig)
+EE
+EOF
+```
