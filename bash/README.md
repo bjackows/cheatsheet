@@ -3,11 +3,11 @@
 ```
 #!/bin/bash
 exec 6< <(jq -cn \
-    '{"blih": {"blih": true}, "blah": "=false;ls"}')
+	'{"blih": {"blih": true}, "blah": "=false;ls"}')
 
-for a in $(jq 'to_entries[] | (.key | tostring) + "=" + (.value | tostring)' -r <&6)
+for a in $(jq 'to_entries[] | "\(.key | tostring)=\(.value | tostring)"' -r <&6)
 do
-	declare "$a"
+	declare "${a}"
 done
 
 echo $blah
