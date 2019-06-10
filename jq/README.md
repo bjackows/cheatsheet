@@ -108,3 +108,9 @@ Pass the select if `. == "1"` or `. == "2"`
 ```
 seq 1 10 | jq -R 'select(. == ("1", "2"))'
 ```
+
+### Alternate operator //
+
+```
+jq -n 'null // true'
+```
