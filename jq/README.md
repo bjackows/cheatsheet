@@ -114,3 +114,9 @@ seq 1 10 | jq -R 'select(. == ("1", "2"))'
 ```
 jq -n 'null // true'
 ```
+
+### Default value for variable
+
+```
+jq --arg blah "" -n '$blah | select($blah != "") // "hey"'
+```
