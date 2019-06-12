@@ -120,3 +120,9 @@ jq -n 'null // true'
 ```
 jq --arg blah "" -n '$blah | select($blah != "") // "hey"'
 ```
+
+### Build array from inputs
+
+```
+jq -nR '[inputs | select(length>0)]'
+```
