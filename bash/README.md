@@ -94,3 +94,11 @@ $(myconfig)
 EE
 EOF
 ```
+
+### Expend variables as arguments
+
+```
+blih=(-l -s ";test")
+
+ls "${blih[@]}"
+```
