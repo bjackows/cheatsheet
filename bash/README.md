@@ -38,6 +38,11 @@ echo titi >&6
 cat < "test.log" >&6
 ```
 
+### Change directory where the script lives
+
+```
+cd "$( cd "$(dirname "$0")"; pwd -P)"
+```
 ### Move file in place
 
 ```
