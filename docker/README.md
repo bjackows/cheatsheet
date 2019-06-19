@@ -5,7 +5,7 @@
 
 ```
 { docker ps -q | \
-  xargs -L8 -P8 docker inspect
+  xargs -r -L8 -P8 docker inspect
 } | jq '.[] | keys'
 ```
 
