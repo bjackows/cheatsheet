@@ -6,7 +6,7 @@
 ```
 { docker ps -q | \
   xargs -r -L8 -P8 docker inspect
-} | jq '.[] | keys'
+} | jq -n '[inputs] | .[][] | keys'
 ```
 
 ### Remove untagged images
