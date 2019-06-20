@@ -11,3 +11,9 @@
      }
   }
 ```
+
+### Build to stdout
+
+```
+go build -o /dev/stdout | cat -e > a.out
+```
