@@ -110,6 +110,8 @@ ls "${blih[@]}"
 
 ### Trap exit
 
+Careful escaping the `$?` variable, I just got bit in the butt twice.
+
 ```
 set -e
 set -o pipefail
