@@ -107,3 +107,18 @@ blih=(-l -s ";test")
 
 ls "${blih[@]}"
 ```
+
+### Trap exit
+
+```
+set -e
+set -o pipefail
+
+exec 6>&1
+exec 7>&2
+log_file=$(tempfile)
+exec > "${log_file}" 2>&1
+trap "[ \"\$?\" -eq 0 ] || cat \"${log_file}\" >&7 && rm \"${log_file}\"" EXIT
+
+set -x
+```
