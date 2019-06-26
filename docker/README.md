@@ -1,11 +1,11 @@
 ### Inspect containers
 
-- `-L` controls the number of containers to pass to docker
-- `-P` controls the number of parallele commands
+- `-n` controls the number of containers to pass to docker
+- `-P` controls the number of parallel commands
 
 ```
 { docker ps -q | \
-  xargs -r -L8 -P8 docker inspect
+  xargs -n8 -P8 bash -c '[ $# -eq 0 ] && exit; docker inspect $@' _
 } | jq -n '[inputs] | .[][] | keys'
 ```
 
