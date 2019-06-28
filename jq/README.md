@@ -126,3 +126,9 @@ jq --arg blah "" -n '$blah | select($blah != "") // "hey"'
 ```
 jq -nR '[inputs | select(length>0)]'
 ```
+
+### Update operator and default value
+
+```
+jq -n '{"blih": 1} | select(.blah) // .blah |= 10'
+```
