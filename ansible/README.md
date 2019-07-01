@@ -23,3 +23,9 @@ echo $@
     - debug:
         msg: "{{ blih.stdout }}"
 ```
+
+### Random uuid
+
+```
+{{ (2 ** 64) | random | string | to_uuid }}
+```
