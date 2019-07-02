@@ -132,3 +132,15 @@ jq -nR '[inputs | select(length>0)]'
 ```
 jq -n '{"blih": 1} | select(.blah) // .blah |= 10'
 ```
+
+### iterate through object quickly
+
+```
+These functions convert between an object and an array of key-value pairs. If to_entries is passed an object, then for each k: v entry in the input, the output array includes {"key": k, "value": v}.
+
+from_entries does the opposite conversion, and with_entries(foo) is a shorthand for to_entries | map(foo) | from_entries, useful for doing some operation to all keys and values of an object. from_entries accepts key, Key, name, Name, value and Value as keys.
+```
+
+```
+ seq 1 10 | jq -nr '[inputs] | with_entries(.key |= (. | tostring) | .value = {})'
+```
