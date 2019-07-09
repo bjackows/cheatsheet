@@ -124,3 +124,32 @@ trap "[ \"\$?\" -eq 0 ] || cat \"${log_file}\" >&7 && rm \"${log_file}\"" EXIT
 
 set -x
 ```
+
+### Job control
+
+```
+#!/bin/bash
+set -m # Enable job control in scripts
+
+for container in $(docker ps -q)
+do
+        docker logs -f "${container}" &
+done
+
+# Variant 1
+
+fg # Give control to the first job
+
+while true
+do
+        kill %- || break # Kill jobs one by one
+        sleep 0.5 # Sleep a little bit because signals are async
+done
+
+## Variant 2
+while true
+do
+        fg %- # Give control to the first job in the list
+	jobs %- || break # check if there a next job
+done
+```
