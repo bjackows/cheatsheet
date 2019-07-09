@@ -138,13 +138,21 @@ done
 
 # Variant 1
 
-fg # Give control to the first job
+set +e
+
+while true # block on each job until there is an interupt
+do
+	fg %-
+	[ $? -eq 130 ] && break
+	jobs %- || break
+done
 
 while true
 do
         kill %- || break # Kill jobs one by one
         sleep 0.5 # Sleep a little bit because signals are async
 done
+set -e
 
 ## Variant 2
 while true
