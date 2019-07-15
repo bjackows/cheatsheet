@@ -161,3 +161,11 @@ do
 	jobs %- || break # check if there a next job
 done
 ```
+
+### Extract pattern from tar archive
+
+Works with glob patterns.
+
+```
+tar -xf cbz.tar --wildcards --no-anchored '*.php'
+```
