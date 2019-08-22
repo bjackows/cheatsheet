@@ -144,3 +144,9 @@ from_entries does the opposite conversion, and with_entries(foo) is a shorthand 
 ```
  seq 1 10 | jq -nr '[inputs] | with_entries(.key |= (. | tostring) | .value = {})'
 ```
+
+### json to csv
+
+```
+inputs | to_entries | map(.value) | @csv
+```
