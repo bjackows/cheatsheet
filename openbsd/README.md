@@ -51,7 +51,7 @@ chmod -R 0700 /mnt/tor-chroot/home/tor
 Run tor:
 
 ```
-chroot -u _tor /mnt/tor-chroot/usr/local/bin/tor -f /home/tor/.torrc > /dev/null 2>&1 &
+chroot -u _tor /mnt/tor-chroot /usr/local/bin/tor -f /home/tor/.torrc > /dev/null 2>&1 &
 ```
 
 Note that it does not support the `RunAsDaemon` flag as it would exit the chroot.
