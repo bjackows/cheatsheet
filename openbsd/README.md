@@ -16,3 +16,34 @@ dhcp parent re0 vnetid 11
 ```
 sysctl machdep.lidaction=0
 ```
+
+### Tor chroot
+
+From https://trac.torproject.org/projects/tor/wiki/doc/OpenbsdChrootedTor
+
+```
+pkg_add -rv tor
+dd if=/dev/zero of=tor_chroot.img bs=1m count=50
+vnconfig vnd1 chroot.img
+disklabel -E vnd1
+  a a
+  w
+  q
+newfs /dev/rvnd1a
+mkdir /mnt/tor-chroot
+mount /dev/vnd1a /mnt/tor-chroot
+ldd "$(which tor)" |
+awk '{print $7}' |
+tail -n +4 |
+xargs -n1 sh -c '
+  mkdir -p /mnt/tor-chroot/"$(dirname "$1")"
+  cp "$1" "/mnt/tor-chroot/$1"
+' _
+mkdir /mnt/tor-chroot/sbin
+mkdir /mnt/tor-chroot/var/{log, lib, run}
+cp "$(which ldconfig)" /mnt/tor/chroot/sbin
+chroot /mnt/tor-chroot/ /sbin/ldconfig /usr/local/bin
+mkdir -p /mnt/tor-chroot/home/tor/.tor
+chown -R _tor:_tor /mnt/tor-chroot/home/tor
+chmod -R 0700 /mnt/tor-chroot/home/tor
+```
