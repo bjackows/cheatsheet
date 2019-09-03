@@ -58,6 +58,8 @@ Note that it does not support the `RunAsDaemon` flag as it would exit the chroot
 
 ### Source based routing
 
+https://casualhacking.io/blog/2010/12/22/route-based-on-source-ip-address-linux-bsd.html
+
 ```
 pass in on $int_if from $int_net route-to {($ext_if $ext_gw)}
 ```
