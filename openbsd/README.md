@@ -55,3 +55,9 @@ chroot -u _tor /mnt/tor-chroot /usr/local/bin/tor -f /home/tor/.torrc > /dev/nul
 ```
 
 Note that it does not support the `RunAsDaemon` flag as it would exit the chroot.
+
+### Source based routing
+
+```
+pass in on $int_if from $int_net route-to {($ext_if $ext_gw)}
+```
