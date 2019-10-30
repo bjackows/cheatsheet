@@ -13,3 +13,9 @@ Add this on openssl 1.1.1 to decrypt from encrypted 1.1.0
 ```
 -md md5
 ```
+
+### Verify chain from openssl
+
+```
+openssl verify  -CAfile blih.pem -untrusted int.pem -show_chain -verify_hostname collections.preveil.com cert.pem
+```
