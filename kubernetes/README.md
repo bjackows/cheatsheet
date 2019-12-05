@@ -26,6 +26,7 @@ Install k3s from docker:
   
 Deploy web ui:
   - https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+  - does not work with another host than localhost
 
 RBAC:
   - https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
