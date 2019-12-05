@@ -4,6 +4,7 @@ Resources:
   - https://rancher.com/blog/2019/2019-02-26-introducing-k3s-the-lightweight-kubernetes-distribution-built-for-the-edge/
   - https://rancher.com/blog/2019/2019-03-21-comparing-kubernetes-cni-providers-flannel-calico-canal-and-weave/
   - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+  - https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/
   
 Components:
 
