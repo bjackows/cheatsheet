@@ -14,3 +14,7 @@
 ```
 docker images -q --filter "dangling=true" | xargs docker rmi
 ```
+
+### Resource
+
+- https://towardsdatascience.com/slimming-down-your-docker-images-275f0ca9337e
