@@ -5,7 +5,9 @@ Resources:
   - https://rancher.com/blog/2019/2019-03-21-comparing-kubernetes-cni-providers-flannel-calico-canal-and-weave/
   - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
   - https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/
-  - https://medium.com/@chamilad/load-balancing-and-reverse-proxying-for-kubernetes-services-f03dd0efe80
+  - https://medium.com/@chamilad/load-balancing-and-reverse-proxying-for-kubernetes-services-
+  - https://github.com/rancher/k3d
+  - https://testdriven.io/blog/running-vault-and-consul-on-kubernetes/
   
 Components:
 
@@ -15,6 +17,16 @@ Components:
   - https://github.com/coredns/coredns
   - https://github.com/containous/traefik
   - https://istio.io/
+  
+Download kubectl:
+  - https://kubernetes.io/docs/tasks/tools/install-kubectl/
+    ```
+sudo apt-get update && sudo apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubectl
+   ```
   
   
 Install k3s:
