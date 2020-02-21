@@ -14,3 +14,23 @@ echo test | iconv -t UTF-16LE
 ```
 powershell -EncodedCommand <base64>
 ```
+
+### Create smb share:
+
+From impacket:
+```
+impacket-smbserver -username username -password password shareName shareDirectory
+```
+
+From powershell:
+
+```
+New-PSDrive -name username -password password \\ip\shareName -Credential $cred -PSProvider "filesystem"
+```
+
+### Create credential
+
+```
+$pass = "password" | ConvertTo-SecureString -AsPlainText -Force
+$cred = Net-Object System.Management.Automation.PsCredential('username', $pass)
+```
