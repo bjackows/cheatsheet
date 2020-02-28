@@ -19,7 +19,7 @@ powershell -EncodedCommand <base64>
 
 From impacket:
 ```
-impacket-smbserver -username username -password password shareName shareDirectory
+impacket-smbserver -username username -password password shareName shareDirectory -smb2support
 ```
 
 From powershell:
@@ -33,4 +33,10 @@ New-PSDrive -name username -password password \\ip\shareName -Credential $cred -
 ```
 $pass = "password" | ConvertTo-SecureString -AsPlainText -Force
 $cred = Net-Object System.Management.Automation.PsCredential('username', $pass)
+```
+
+### CD into share
+
+```
+cd \\<ip>\<share>
 ```
