@@ -169,3 +169,9 @@ Works with glob patterns.
 ```
 tar -xf cbz.tar --wildcards --no-anchored '*.php'
 ```
+
+### Multi thread line count
+
+```
+find <dir> -type f | xargs -n1 -P 32 bash -c 'wc -l $1' _ | awk '{sum+=$1}END{print sum}
+```
