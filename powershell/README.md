@@ -10,11 +10,11 @@ https://stackoverflow.com/questions/37996640/how-can-i-base64-encode-a-string-on
 
 First convert your payload to utf16 little endian
 ```
-echo test | iconv -t UTF-16LE
+echo test | iconv -f ascii -t UTF-16LE
 ```
 
 ```
-powershell -EncodedCommand <base64>
+powershell -exec bypass -EncodedCommand <base64>
 ```
 
 ### Create smb share:
