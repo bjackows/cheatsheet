@@ -175,3 +175,9 @@ tar -xf cbz.tar --wildcards --no-anchored '*.php'
 ```
 find <dir> -type f | xargs -n1 -P 32 bash -c 'wc -l $1' _ | awk '{sum+=$1}END{print sum}
 ```
+
+### Find if ip is in CIDRs
+
+```
+grepcidr "$(curl https://ip-ranges.amazonaws.com/ip-ranges.json | jq -r '.prefixes[] | select(.region == "us-east-1") | select (.service == "AMAZON") | .ip_prefix' | sort -n)" <<< "1.195.128.120"
+```
