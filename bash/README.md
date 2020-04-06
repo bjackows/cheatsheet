@@ -181,3 +181,17 @@ find <dir> -type f | xargs -n1 -P 32 bash -c 'wc -l $1' _ | awk '{sum+=$1}END{pr
 ```
 grepcidr "$(curl https://ip-ranges.amazonaws.com/ip-ranges.json | jq -r '.prefixes[] | select(.region == "us-east-1") | select (.service == "AMAZON") | .ip_prefix' | sort -n)" <<< "1.195.128.120"
 ```
+
+```
+curl -s https://ip-ranges.amazonaws.com/ip-ranges.json |
+jq -r '
+	.prefixes[] | select(.region == "us-east-1") |
+	select (.service == "AMAZON") | .ip_prefix
+' |
+sort -n |
+xargs -n1 -P10 bash -c '
+	for a in $(dig A +short email-smtp.us-east-1.amazonaws.com)
+	do grepcidr "${1}" <<< "${a}" && echo $1; done
+' _ |
+grep /
+```
