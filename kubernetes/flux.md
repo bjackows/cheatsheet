@@ -8,6 +8,6 @@ helm template \
   --set git.readonly=true \
   --set sync.state=secret \
   --set git.pollInterval=10s \
-  --set syncGarbageCollection.enabled=true
+  --set syncGarbageCollection.enabled=true | kubectl apply -f -
 fluxctl identity
 ```
