@@ -9,4 +9,5 @@ helm template \
   --set sync.state=secret \
   --set git.pollInterval=10s \
   --set syncGarbageCollection.enabled=true
+fluxctl identity
 ```
