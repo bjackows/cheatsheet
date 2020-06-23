@@ -5,9 +5,10 @@
 
 set -eufo pipefail
 
-DEFAULT_PREFIX=ebu_docker
+DEFAULT_PREFIX=my-branch
+IMAGE_NAME=nginx
 aws ecr describe-images \
-  --repository-name backend/collection_server \
+  --repository-name "${IMAGE_NAME}" \
   --query "sort_by(imageDetails,&imagePushedAt)[*].imageTags[?starts_with(@,\`${DEFAULT_PREFIX:-}\`)]|[-1][0]||\`\`" \
   --output text |
 rev |
