@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: server
+  name: server
+spec:
+  ports:
+  - name: server
+    port: 80
+    targetPort: 8080
+  selector:
+    app: server
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server
+  annotations:
+    linkerd.io/inject: enabled
+spec:
+  containers:
+  - command:
+    - sleep
+    - "1000000"
+    image: ubuntu
+    imagePullPolicy: IfNotPresent
+    name: server
+    ports:
+    - containerPort: 8080
+      name: server
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client
+  annotations:
+    linkerd.io/inject: enabled
+spec:
+  containers:
+  - command:
+    - sleep
+    - "1000000"
+    image: ubuntu
+    imagePullPolicy: IfNotPresent
+    name: client
