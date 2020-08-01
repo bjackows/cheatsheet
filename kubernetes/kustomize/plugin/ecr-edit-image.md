@@ -1,7 +1,7 @@
 # Tiny kustomize plugin for fetching latest ecr image
 
 
-File: `kustomize/ecr-edit-image/edit-image/edit-image`
+File: `kustomize/ecr-edit-image/v0.0.1/edit-image/edit-image`
 ```
 #!/bin/bash
 ## Requires:
