@@ -61,3 +61,10 @@ Finally type boot
 
 That's it, That should boot the usb drive.
 ```
+
+### Kali guest with Libvirt on ubuntu
+
+```
+kvm-ok &&
+apt install -y virtinst qemu-kvm libvirt-daemon-system libosinfo-bin
+```
