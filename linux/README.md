@@ -66,5 +66,5 @@ That's it, That should boot the usb drive.
 
 ```
 kvm-ok &&
-apt install -y virtinst qemu-kvm libvirt-daemon-system libosinfo-bin
+apt install -y virtinst qemu-kvm libvirt-daemon-system libosinfo-bin xserver-xorg-video-qxl spice-vdagent
 ```
